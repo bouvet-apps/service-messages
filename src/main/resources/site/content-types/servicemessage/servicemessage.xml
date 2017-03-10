@@ -1,0 +1,27 @@
+<content-type>
+    <display-name>Service message</display-name>
+    <super-type>base:structured</super-type>
+    <form>
+        <input name="text" type="TextArea">
+            <label>Text</label>
+            <occurrences minimum="1" maximum="1"/>
+            <config/>
+        </input>
+        <input name="link" type="ContentSelector">
+            <label>Link</label>
+            <occurrences minimum="0" maximum="1"/>
+        </input>
+
+        <input name="type" type="ComboBox">
+            <label>Type:</label>
+            <occurrences minimum="1" maximum="1"/>
+            <config>
+                <option value="info">Info</option>
+                <option value="warning">Warning</option>
+                <option value="danger">Danger</option>
+                <option value="success">Success</option>
+            </config>
+            <default>warning</default>
+        </input>
+    </form>
+</content-type>
