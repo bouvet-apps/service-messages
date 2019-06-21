@@ -1,8 +1,9 @@
-displayServiceMessages = function (serviceurl) {
+displayServiceMessages = function() {    
     if (typeof JSON !== "object") {
       JSON = {};
       JSON.parse = json_parse;  // Included in json_parse.js
     }
+    var serviceurl = JSON.parse(document.querySelector("[data-selector='servicemessages']").innerText).service;
     var xhr;
     if (window.XMLHttpRequest) {
       xhr = new XMLHttpRequest();
@@ -45,3 +46,11 @@ displayServiceMessages = function (serviceurl) {
     };
     xhr.send();
 };
+
+if (document.readyState === "complete" 
+    || document.readyState === "loaded" 
+    || document.readyState === "interactive") {
+        displayServiceMessages();
+} else {
+    document.addEventListener('DOMContentLoaded', displayServiceMessages, false);
+}

@@ -5,7 +5,8 @@ exports.responseFilter = function(req, res) {
 
     var js = '<script src="'+ portalLib.assetUrl({path: 'js/json_parse.js'}) +'"></script>'
            + '<script src="'+ portalLib.assetUrl({path: 'js/scripts.js'}) +'"></script>';
-    var html = '<script type="text/javascript">displayServiceMessages("'+ portalLib.serviceUrl({service: 'servicemessage'}) +'");</script>';
+    var html = '<script type="application/json" data-selector="servicemessages">{"service": "' +  portalLib.serviceUrl({service: 'servicemessage'}) + '"}</script>';
+    //displayServiceMessages("'+ portalLib.serviceUrl({service: 'servicemessage'}) +'");</script>';
 
     // Normalize the pageContributions
     res.pageContributions.headEnd = arrayUtil.ensureArray(res.pageContributions.headEnd);

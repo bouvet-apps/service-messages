@@ -10,6 +10,6 @@ exports.ensureArray = function(obj) {
         return [];
     }
 
-    // Finally return the arrayed object (or string or whatevz)
+    // Finally return the arrayed object
     return [ obj ];
 }
