@@ -5,17 +5,18 @@ var cacheLib = require('/lib/xp/cache');
 // Cache for service messages. We will hold them for 60 seconds before
 // refreshing to minimize the load overhead.
 var dataCache = cacheLib.newCache({
-    size: 1,
+    size: 100,
     expire: 60
 });
 
 
 // Get all published content of type servicemessage in the current site.
 var getServiceMessages = function() {
-    return dataCache.get("serviceMessages", function () {
+    var sitePath = portalLib.getSite()._path;
+    return dataCache.get("serviceMessages-" + sitePath, function () {
         var result = contentLib.query({
                 sort:   "publish.from DESC",
-                query: " _parentPath LIKE '/content" + portalLib.getSite()._path + "*'",
+                query: " _parentPath LIKE '/content" + sitePath + "*'",
                 branch: "master",
                 contentTypes:  [
                     app.name + ":servicemessage"
