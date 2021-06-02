@@ -1,6 +1,6 @@
 var portalLib = require('/lib/xp/portal');
 var contentLib = require('/lib/xp/content');
-var cacheLib = require('/lib/xp/cache');
+var cacheLib = require('/lib/cache');
 
 // Cache for service messages. We will hold them for 60 seconds before
 // refreshing to minimize the load overhead.
@@ -38,8 +38,8 @@ var getServiceMessages = function() {
 };
 
 // Handle GET requests
-exports.get = function(req) {
-
+exports.get = function() {
+    log.info("running exports.get");
     var siteConfig = portalLib.getSiteConfig();
     var id = siteConfig.id;
 
